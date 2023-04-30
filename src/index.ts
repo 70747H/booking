@@ -1,14 +1,15 @@
-require('module-alias/register');
+import 'module-alias/register';
 import * as dotenv from 'dotenv';
-import { createServer } from '@server/config/express';
+import { createServer } from '@config/express';
 import { AddressInfo } from 'net';
 import http from 'http';
 import logger from '@config/logger';
+import connectDB from '@config/db';
 
 dotenv.config();
 
 const host = process.env.HOST || '0.0.0.0';
-const port = process.env.PORT || '5001';
+const port = process.env.PORT || '3000';
 
 const startServer = () => {
   const app = createServer();
@@ -18,6 +19,8 @@ const startServer = () => {
       `Server ready at http://${addressInfo.address}:${addressInfo.port}`,
     );
   });
+
+  connectDB();
 
   const signalTraps: NodeJS.Signals[] = ['SIGTERM', 'SIGINT', 'SIGUSR2'];
   signalTraps.forEach((type) => {

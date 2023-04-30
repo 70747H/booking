@@ -18,15 +18,21 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
+    "experimentalDecorators": true,
     "outDir": "./build",
     "baseUrl": ".",
     "paths": {
       "@server/*": ["src/*"],
       "@tests/*": ["__tests__/*"],
       "@config/*": ["src/config/*"],
-      "@domain/*": ["src/domain/*"],
+      "@service/*": ["src/service/*"],
       "@controller/*": ["src/controller/*"],
-      "@middleware/*": ["src/middleware/*"]
+      "@middleware/*": ["src/middleware/*"],
+      "@model/*": ["src/models/*"],
+      "@schema/*": ["src/schema/*"],
+      "@util/*": ["src/util/*"],
+      "@route/*": ["src/route/*"],
+      "@enum/*": ["src/enum/*"],
     }
   },
   "include": ["src/**/*", "__tests__/**/*"],

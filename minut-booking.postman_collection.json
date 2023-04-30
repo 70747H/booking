@@ -1,0 +1,657 @@
+{
+	"info": {
+		"_postman_id": "25978a21-3149-49b3-97c5-96a717cfc947",
+		"name": "minut-booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1407257"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"ownerr\",\n    \"password\": \"12345578\",\n    \"passwordConfirm\": \"12345578\",\n    \"phone\": \"1234567811\",\n    \"type\": \"owner\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"pm.collectionVariables.set(\"token\", responseJson.accessToken)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"owner\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "List users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5005/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5005/api/users/644d6d6400ea6230fb7ad7a3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"users",
+								"644d6d6400ea6230fb7ad7a3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"jhoonn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/users/644d6d6400ea6230fb7ad7a3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"users",
+								"644d6d6400ea6230fb7ad7a3"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"jhoonn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/users/644eb9a728f912fb7d685170",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"users",
+								"644eb9a728f912fb7d685170"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "List reservations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5005/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"reservations"
+							],
+							"query": [
+								{
+									"key": "guest",
+									"value": "644d6d6400ea6230fb7ad7a3",
+									"disabled": true
+								},
+								{
+									"key": "property",
+									"value": "644ea84a9dad9666a5746c89",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find reservation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5005/api/reservations/644d87913f0f1b882bedb1c1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"reservations",
+								"644d87913f0f1b882bedb1c1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update reservation",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"booked\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/reservations/644ea8b09dad9666a5746c97",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"reservations",
+								"644ea8b09dad9666a5746c97"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete reservation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkMzY5YWU0OTRlOTQ5OTJkMzE3MzciLCJpYXQiOjE2ODI3ODE4NTYsImV4cCI6MTY4Mjc4Mjc1Nn0.LjyElozANB0YDIYsIzr9YFuGwNvRL1pk-BJSMzGkMDW5sBNavw5W-rmQitfQZGhdEuT6JbPUbd-DRGETmP-DFyPdX90ouKJv1ZY5xXyVsZoTu0S5xDo7B0KwuV21n5Rzb50nWMhFLy-hqtCMNz4qD0jcpLpghg8HnB_wSoueg3-8_xYLCh5mGM2gEkBQfz5ndWqUgyj1mZu6Nw3ywLFRxLYG3FMrY16bBmZhuIFHCDuvXW1DzpqDXlWnQXEfo_nwmPjSW4LUlbA--CHOa8ZBYU4dhawUd2tt9it78L9qA4a60i4Mjl4aSFMEptZ75O30yCpXWy1TIuLOdk2shAeSHA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"jhoonn\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/reservations/644ec1055798071d6c3e259d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"reservations",
+								"644ec1055798071d6c3e259d"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Reservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"guest\": \"644d6d6400ea6230fb7ad7a3\",\n    \"property\": \"644ea84a9dad9666a5746c89\",\n    \"startDate\": \"2020-01-03T00:00:00.123Z\",\n    \"endDate\": \"2020-01-13T00:00:00.123Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Property",
+			"item": [
+				{
+					"name": "List Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5005/api/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Properties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5005/api/properties/644ea84a9dad9666a5746c89",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"properties",
+								"644ea84a9dad9666a5746c89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Property",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"H3-107\",\n    \"owner\": \"644d6d8b00ea6230fb7ad7a7\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"properties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Property",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"H3-106\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/properties/644ea84a9dad9666a5746c89",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"properties",
+								"644ea84a9dad9666a5746c89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Property",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"H3-106\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/properties/644ec7d9ff22cca67950209b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"properties",
+								"644ec7d9ff22cca67950209b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "List Messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5005/api/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sender\": \"644d6d6400ea6230fb7ad7a3\",\n    \"reciever\": \"644d6d8b00ea6230fb7ad7a7\",\n    \"body\": \"any thing\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/messages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "anyvalue",
+			"type": "string"
+		}
+	]
+}
